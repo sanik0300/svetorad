@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="svetotelegraf.MainPage">
+
+    <Grid Margin="30" x:Name="allingrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Frame CornerRadius="10" Padding="15" BorderColor="LightBlue" BackgroundColor="Lavender">
+            <Frame Padding="5">
+                <StackLayout>
+                    <Label x:Name="processed">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="past" TextColor="Blue" FontSize="20"></Span>
+                                <Span x:Name="current" TextColor="Lime" FontSize="20"></Span>
+                                <Span x:Name="future" TextColor="Cyan" FontSize="20"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Editor x:Name="messagetxt" VerticalOptions="FillAndExpand"></Editor>
+                </StackLayout>
+
+            </Frame>
+        </Frame>
+
+        <StackLayout BackgroundColor="Pink" x:Name="ui_stuff" Grid.Row="1" Orientation="Vertical">
+            <StackLayout>
+                <Label BackgroundColor="Green" x:Name="tellVel">скорость: 100%</Label>
+                <Slider WidthRequest="200" x:Name="chooseVel" VerticalOptions="Center" Background="Yellow" ValueChanged="chooseVel_ValueChanged" MinimumTrackColor="Blue" ThumbColor="DarkBlue" MaximumTrackColor="LightSteelBlue" Maximum="140" Minimum="60" Value="100"></Slider>
+            </StackLayout> 
+
+            <Grid x:Name="lil_buttons" BackgroundColor="Aquamarine" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="play" Clicked="play_Clicked" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Fill" BackgroundColor="Lavender" Text="|>"></Button>
+                <Button x:Name="pause" Clicked="pause_Clicked" Text="||" IsVisible="False"></Button>
+                <Button x:Name="stop" Clicked="pause_Clicked" Grid.Column="1" Text="|=|" IsVisible="False"></Button>
+            </Grid>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
