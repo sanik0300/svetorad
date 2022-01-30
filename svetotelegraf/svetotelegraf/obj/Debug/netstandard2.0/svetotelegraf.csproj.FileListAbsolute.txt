@@ -1,0 +1,15 @@
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\bin\Debug\netstandard2.0\svetotelegraf.deps.json
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\bin\Debug\netstandard2.0\svetotelegraf.dll
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\bin\Debug\netstandard2.0\ref\svetotelegraf.dll
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\bin\Debug\netstandard2.0\svetotelegraf.pdb
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.GeneratedMSBuildEditorConfig.editorconfig
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.AssemblyInfoInputs.cache
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.AssemblyInfo.cs
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.csproj.CoreCompileInputs.cache
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\XamlC.stamp
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.dll
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\ref\svetotelegraf.dll
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.pdb
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.csproj.AssemblyReference.cache
