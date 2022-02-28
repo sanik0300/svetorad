@@ -8,19 +8,16 @@ using Android.Content;
 
 namespace svetotelegraf.Droid
 {
-    [Activity(Label = "svetovafel", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "svetovafel", LaunchMode = LaunchMode.SingleTop, Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        AtsralReceiver receiver;
+        public static MainActivity Current { get; private set; }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Signal.Wtfcntxt = this;
-            receiver = new AtsralReceiver();
+            Current = this;           
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            /*if (App.Current == null)
-                App.Current = new App();*/
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -29,16 +26,5 @@ namespace svetotelegraf.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-        protected override void OnStart()
-        {
-            base.OnStart();
-            RegisterReceiver(receiver, new IntentFilter(AtsralReceiver.Filter));
-        }
-        protected override void OnStop()
-        {
-            UnregisterReceiver(receiver);
-            base.OnStop();
-        }
-
     }
 }

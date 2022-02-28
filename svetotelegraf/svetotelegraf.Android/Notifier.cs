@@ -11,8 +11,8 @@ namespace svetotelegraf.Droid
     static class Notifier
     {
         private static bool channelexists = false;
-        private static int notifId = 0;
-        static public void Publish(ref Context ctnx)
+        public const int notifId = 0;
+        static public Notification Publish(Context ctnx)
         {
             string CHANNELLID = "okwtf";
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O) 
@@ -34,10 +34,11 @@ namespace svetotelegraf.Droid
                     .AddAction(Resource.Drawable.abc_cab_background_top_material, "pause", pi)
                     .AddAction(Resource.Drawable.abc_cab_background_top_material, "stop", pi2);
                     
-                Notification @finally = builder.Build();
-                manager.Notify(notifId, @finally);
+                return builder.Build();
             }
+            return null;
         }
+
         static public void Remove(ref Context ctnx) 
         {
             var manager = (NotificationManager)ctnx.GetSystemService(Context.NotificationService);

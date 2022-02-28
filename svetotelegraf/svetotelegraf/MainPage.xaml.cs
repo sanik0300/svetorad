@@ -118,7 +118,7 @@ namespace svetotelegraf
             messagetxt.Text = null;
             uint pos = 0;
             int howlong = ls.interval;
-            signaller.SendNotifcatiom();
+            signaller.BeginService();
             while(ls.position<txts.Length)
             {
                 pos = ls.position;
@@ -158,7 +158,7 @@ namespace svetotelegraf
             if (ls == null)
                 return;
             ls.OnPlay = false;
-            signaller.RemoveNotification();
+            signaller.EndService();
             messagetxt.Text = ls.Txt;
             if (sender == stop)
             {
@@ -166,7 +166,12 @@ namespace svetotelegraf
                 foreach(Span sp in processed.FormattedText.Spans)
                     sp.Text = null;
             }
-                
+        }
+
+        private void beeper_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked && signaller.AlreadyMusic())
+                (sender as CheckBox).IsChecked = false;           
         }
     }
 }

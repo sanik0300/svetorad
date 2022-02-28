@@ -17,7 +17,10 @@ namespace svetotelegraf.Droid
         public static string Filter { get { return "pause this shit pls"; } }
         public override void OnReceive(Context context, Intent intent)
         {
-            switch (intent.Flags) { }
+            switch (intent.Flags) 
+            { 
+            
+            }
             
         }
     }

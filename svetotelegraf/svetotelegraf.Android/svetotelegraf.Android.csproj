@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtsralReceiver.cs" />
+    <Compile Include="FFService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notifier.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

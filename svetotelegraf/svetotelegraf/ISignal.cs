@@ -8,7 +8,9 @@ namespace svetotelegraf
     public interface ISignal
     {
         Task flash(int len, bool sound);
-        void SendNotifcatiom();
-        void RemoveNotification();
+        void BeginService();
+        void EndService();
+
+        bool AlreadyMusic();
     }
 }

@@ -31,7 +31,7 @@
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label x:Name="tellVel">скорость: 100%</Label>
-                    <CheckBox x:Name="beeper"></CheckBox>
+                    <CheckBox x:Name="beeper" CheckedChanged="beeper_CheckedChanged"></CheckBox>
                     <Label>Также орать</Label>
                 </StackLayout>
                 <Slider x:Name="chooseVel" ValueChanged="chooseVel_ValueChanged" MinimumTrackColor="Blue" ThumbColor="DarkBlue" MaximumTrackColor="LightSteelBlue" Maximum="230" Minimum="60" Value="100"></Slider>
