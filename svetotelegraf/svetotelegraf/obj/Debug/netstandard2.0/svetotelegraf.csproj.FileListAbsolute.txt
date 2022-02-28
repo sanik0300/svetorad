@@ -15,4 +15,4 @@ D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetoteleg
 D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.dll
 D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\ref\svetotelegraf.dll
 D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.pdb
-D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.csproj.CopyComplete
+D:\evacuated_data\Projects_Cs\svetotelegraf\svetorad without services\svetotelegraf\svetotelegraf\obj\Debug\netstandard2.0\svetotelegraf.csproj.AssemblyReference.cache

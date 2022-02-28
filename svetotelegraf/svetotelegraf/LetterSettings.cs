@@ -36,7 +36,7 @@ namespace svetotelegraf
             { 'н', new byte[] { 1, 0} },
                 { 'n', new byte[] { 1, 0} }, { 'ń', new byte[] {1, 1, 0, 1, 1 } }, { 'ñ', new byte[] {1, 1, 0, 1, 1 } },
             { 'о', new byte[] {1, 1, 1 } },
-                { 'ó', new byte[] {1, 1, 1, 0} }, { 'ö', new byte[] {1, 1, 1, 0} }, { 'ø', new byte[] {1, 1, 1, 0} },
+                 { 'o', new byte[] {1, 1, 1 } }, { 'ó', new byte[] {1, 1, 1, 0} }, { 'ö', new byte[] {1, 1, 1, 0} }, { 'ø', new byte[] {1, 1, 1, 0} },
             {'п' , new byte[] { 0, 1, 1, 0} },
                 {'p' , new byte[] { 0, 1, 1, 0} }, {'þ', new byte[] {0, 1,1,0,0 } },
             {'р', new byte[]{0,1,0} }, {'r', new byte[]{0,1,0} },
@@ -59,8 +59,20 @@ namespace svetotelegraf
             { 'ь', new byte[]{1,0,0,1} },
             { 'э', new byte[]{0,0,1,0,0} }, {'є', new byte[]{ 0, 0, 1, 0,0 } },
             { 'ю', new byte[]{0,0,1,1} }, { 'q', new byte[]{1,1,0,1} },
-            { 'я', new byte[]{0,1,0,1} }
+            { 'я', new byte[]{0,1,0,1} },
+            
+            { '1', new byte[]{0,1,1,1,1} },
+            { '2', new byte[]{0,0,1,1,1} },
+            { '3', new byte[]{0,0,0,1,1} },
+            { '4', new byte[]{0,0,0,0,1} },
+            { '5', new byte[]{0,0,0,0,0} },
+            { '6', new byte[]{1,0,0,0,0} },
+            { '7', new byte[]{1,1,0,0,0} },
+            { '8', new byte[]{1,1,1,0,0} },
+            { '9', new byte[]{1,1,1,1,1} },
+            { '0', new byte[]{1,1,1,1,1} }
         };
+
         private static double AvgLetterLen;
         /// <summary>
         /// Длительность 1 точки (минимального отрезка) в мс
