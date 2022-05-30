@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="svetotelegraf.SettingsPage" Padding="8">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label>Показывать в уведомлениях текст</Label>
+                <CheckBox x:Name="showtext" CheckedChanged="setting_check"></CheckBox>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label>Разрешить звук.сигнал при иной музыке (отключать это советую только в крайнем случае)</Label>
+                <CheckBox x:Name="musicok" CheckedChanged="setting_check"></CheckBox>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label>Запретить менять, орать или нет, во время сигнала</Label>
+                <CheckBox x:Name="nochange" CheckedChanged="setting_check"></CheckBox>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
