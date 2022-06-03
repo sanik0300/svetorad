@@ -28,37 +28,35 @@ namespace svetotelegraf
             InitializeComponent();
             width = this.Width;
             height = this.Height;
-            chooseVel.Value = Preferences.Get("speed", (double)100);
-            beeper.IsChecked = Preferences.Get("beep", false);
-
+           
             signaller = DependencyService.Get<ISignal>();
 
             play.Clicked += prePlayClick;
             play.Clicked += play_Clicked;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            chooseVel.Value = Preferences.Get(constants.speed, (double)100);
+            beeper.IsChecked = Preferences.Get(constants.beep, false);
+            loop.IsChecked = Preferences.Get(constants.loop, false);
+        }
+
         private void InstantiatePause()
         {
             lil_buttons.Children.Clear();
             lil_buttons.Children.Add(pause, 0, 0);
-            lil_buttons.Children.Add(stop, horizontal ? 0 : 1, horizontal ? 1 : 0);          
+            lil_buttons.Children.Add(stop, 1, 0);//добавляем паузу во второй столбец в единственной строчке
         }
         private void InstantiatePlay() {
             lil_buttons.Children.Clear();
             lil_buttons.Children.Add(play);
-            if (horizontal)
-            {
-                Grid.SetRowSpan(play, 2);
-                play.HeightRequest = play.Width;
-            }
-            else
-            {
-                Grid.SetColumnSpan(play, 2);
-                play.WidthRequest = play.Height;
-            }
-                
-            play.HorizontalOptions = horizontal ? LayoutOptions.FillAndExpand : LayoutOptions.Center;
-            play.VerticalOptions = horizontal ? LayoutOptions.Center : LayoutOptions.FillAndExpand;
+
+            Grid.SetColumnSpan(play, 2);
+            play.WidthRequest = play.Height;
+
+            play.HorizontalOptions = play.VerticalOptions = LayoutOptions.Center;
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -72,25 +70,19 @@ namespace svetotelegraf
                 allingrid.ColumnDefinitions.Clear();
                 allingrid.Children.Remove(ui_stuff);
                 lil_buttons.Children.Clear();
-                lil_buttons.RowDefinitions.Clear();
-                lil_buttons.ColumnDefinitions.Clear();
                
                 horizontal = width > height;
                 if (horizontal)
                 {
+                    allingrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(11, GridUnitType.Star) });
                     allingrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(4, GridUnitType.Star) });
-                    allingrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                     allingrid.Children.Add(ui_stuff, 1, 0);
-                    for (int i = 0; i < 2; i++)
-                        lil_buttons.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 }
                 else
                 {
-                    allingrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(3, GridUnitType.Star) });
-                    allingrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                    allingrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(5, GridUnitType.Star) });
+                    allingrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(2, GridUnitType.Star) });
                     allingrid.Children.Add(ui_stuff, 0, 1);
-                    for (int i = 0; i < 2; i++)
-                        lil_buttons.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });                                      
                 }
                 if (ls != null && ls.OnPlay)
                     InstantiatePause();
@@ -98,10 +90,11 @@ namespace svetotelegraf
                     InstantiatePlay();                
             }
         }
+
         private void chooseVel_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             chooseVel.Value = Math.Round(chooseVel.Value);
-            tellVel.Text = $"скорость - {chooseVel.Value} знаков/мин";
+            tellVel.Text = $"скорость - {chooseVel.Value}\n знаков/мин";
         }
 
         protected void prePlayClick(object sender, EventArgs e)
@@ -188,10 +181,16 @@ namespace svetotelegraf
                 }
                 signaller.ReportProgress((float)(pos + 1) / txts.Length);
 
-
                 if (ls == null || !ls.OnPlay)//Если воспроизведение остановили...
                     return;
-                ls.position++; //А если нет, то переходим на следующую букву)
+                ls.position++; //А если не, то переходим на следующую букву)
+
+                if (loop.IsChecked && ls.position >= txts.Length) {//Если текст так-то закончился, но включено зацикливание
+                    ls.position = 0; //сбрасываем
+                    await Task.Delay(howlong * 3); //ждём ещё один пробел
+                    past.Clear();//вычищаем пройденные буквы
+                    nexts = new StringBuilder(ls.Txt, ls.Txt.Length);//а в предстоящие запихиваем всё
+                }                  
             }
             pause_Clicked(stop, e);//в любом случае нужно нажать паузу, хотя бы ради изменения кнопок
         }
@@ -270,8 +269,9 @@ namespace svetotelegraf
 
         protected override void OnDisappearing()
         {
-            Preferences.Set("speed", chooseVel.Value);
-            Preferences.Set("beep", beeper.IsChecked);
+            Preferences.Set(constants.speed, chooseVel.Value);
+            Preferences.Set(constants.beep, beeper.IsChecked);
+            Preferences.Set(constants.loop, loop.IsChecked);
             base.OnDisappearing();
         }
     }

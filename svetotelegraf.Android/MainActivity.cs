@@ -8,7 +8,7 @@ using Android.Content;
 
 namespace svetotelegraf.Droid
 {
-    [Activity(Label = "svetotelegraf", LaunchMode = LaunchMode.SingleInstance, Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "svetotelegraf", LaunchMode = LaunchMode.SingleInstance, Icon = "@drawable/title_icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Current { get; private set; }
