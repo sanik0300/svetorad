@@ -16,6 +16,11 @@
         },
         "runtime": {
           "svetotelegraf.dll": {}
+        },
+        "resources": {
+          "ru/svetotelegraf.resources.dll": {
+            "locale": "ru"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},

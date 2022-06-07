@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace svetotelegraf
+﻿namespace svetotelegraf
 {
     public interface IСanCarryMessages
     {

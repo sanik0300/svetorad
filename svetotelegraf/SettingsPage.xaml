@@ -1,22 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:svetotelegraf"
              x:Class="svetotelegraf.SettingsPage" Padding="8">
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="settings_point">
+            <Setter Property="TextColor" Value="{AppThemeBinding Default=Black, Light=Black,Dark=White}"></Setter>
+        </Style>
+
+        <Style TargetType="CheckBox" x:Key="settings_check">
+            <Setter Property="Color" Value="{AppThemeBinding Default=Magenta, Light=Magenta, Dark=DarkMagenta}"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label>Показывать в уведомлениях текст</Label>
-                <CheckBox x:Name="showtext" CheckedChanged="setting_check"></CheckBox>
+                <Label Style="{StaticResource Key=settings_point}" Text="{x:Static resources:AppResources.setting1}"></Label>
+                <CheckBox Style="{StaticResource Key=settings_check}" x:Name="showtext" CheckedChanged="setting_check"></CheckBox>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label>Разрешить звук.сигнал при иной музыке (отключать это советую только в крайнем случае)</Label>
-                <CheckBox x:Name="musicok" CheckedChanged="setting_check"></CheckBox>
+                <Label Style="{StaticResource Key=settings_point}" Text="{x:Static resources:AppResources.setting2}"></Label>
+                <CheckBox Style="{StaticResource Key=settings_check}" x:Name="musicok" CheckedChanged="setting_check"></CheckBox>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label>Запретить менять, орать или нет, во время сигнала</Label>
-                <CheckBox x:Name="nochange" CheckedChanged="setting_check"></CheckBox>
+                <Label Style="{StaticResource Key=settings_point}" Text="{x:Static resources:AppResources.setting3}"></Label>
+                <CheckBox Style="{StaticResource Key=settings_check}" x:Name="nochange" CheckedChanged="setting_check"></CheckBox>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

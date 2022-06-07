@@ -35,12 +35,25 @@ namespace svetotelegraf
             play.Clicked += play_Clicked;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             chooseVel.Value = Preferences.Get(constants.speed, (double)100);
             beeper.IsChecked = Preferences.Get(constants.beep, false);
             loop.IsChecked = Preferences.Get(constants.loop, false);
+
+           await AskForPermissionAsync<Permissions.Camera>();
+        }
+
+        private async Task AskForPermissionAsync<P>() where P : Permissions.BasePermission, new()
+        {
+            PermissionStatus status = await Permissions.CheckStatusAsync<P>();           
+            if(status != PermissionStatus.Granted)
+            {
+                await DisplayAlert(AppResources.permissions_header, AppResources.permissions_body, "ок");
+                await Permissions.RequestAsync<P>();
+            }
+
         }
 
         private void InstantiatePause()
@@ -91,10 +104,11 @@ namespace svetotelegraf
             }
         }
 
+        //private StringBuilder sb_for_telling_speed = new StringBuilder(AppResources.speed);
         private void chooseVel_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             chooseVel.Value = Math.Round(chooseVel.Value);
-            tellVel.Text = $"скорость - {chooseVel.Value}\n знаков/мин";
+            tellVel.Text = string.Format(AppResources.speed, chooseVel.Value); 
         }
 
         protected void prePlayClick(object sender, EventArgs e)
@@ -140,7 +154,7 @@ namespace svetotelegraf
             messagetxt.IsReadOnly = false;
             uint pos = 0;
             int howlong = ls.interval;
-            signaller.BeginService(Preferences.Get("showtext", true) ? ls.Txt : "сигналим текст...");//ебошим уведомление
+            signaller.BeginService(Preferences.Get("showtext", true) ? ls.Txt : AppResources.hidden_text);//ебошим уведомление
 
             while (ls.position < txts.Length)//До конца текста:
             {
@@ -262,7 +276,7 @@ namespace svetotelegraf
             {
                 (sender as CheckBox).IsChecked = false;//вот на этом моменте
                 if(really_fire_popup) { 
-                        signaller.ShowBottomPopup("нельзя включать сейчас"); }                     
+                        signaller.ShowBottomPopup(AppResources.sound_denied); }                     
                 really_fire_popup = !really_fire_popup;
             }            
         }

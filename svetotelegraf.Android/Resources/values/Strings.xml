@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<string name="speed">speed: %d symbols/min</string>
+	<string name="sound">Sound</string>
+	<string name="loop">Loop</string>
+	<string name="main_tab">In/output</string>
+	<string name="settings_tab">Settings</string>
+	<string name="setting1">Show your text in the notifications</string>
+	<string name="hidden_text">signalling some text...</string>
+	<string name="setting2">Allow sound signal during other media playback (not advised to turn off)</string>
+	<string name="setting3">Lock the sound state during signal</string>
+	<string name="play_keyword">play</string>
+	<string name="pause_keyword">pause</string>
+	<string name="stop_keyword">stop</string>
+	<string name="permissions_header">Please allow access to camera</string>
+	<string name="permissions_body">only flashlight will be affected</string>
+	<string name="sound_denied">no, you can't enable sound now</string>
+</resources>
