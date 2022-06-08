@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:svetotelegraf"
              x:Class="svetotelegraf.MainPage">
     
     <ContentPage.Resources>
@@ -21,7 +22,7 @@
                     <Setter Property="Color" Value="Gray"></Setter>
                 </Trigger>
                 <Trigger TargetType="CheckBox" Property="IsEnabled" Value="True">
-                    <Setter Property="Color" Value="Magenta"></Setter>
+                    <Setter Property="Color" Value="{AppThemeBinding Dark=DarkMagenta, Default=Magenta,Light=Magenta}"></Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -50,18 +51,19 @@
         </Grid.RowDefinitions>
 
         <Frame x:Name="leinsert" CornerRadius="10" Padding="15" BorderColor="LightBlue" BackgroundColor="Lavender">
-            <Frame Padding="5">
+            <Frame Padding="5" Background="{AppThemeBinding Default=White, Light=White, Dark=#323232}">
                 <StackLayout>
                     <Label x:Name="processed">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span x:Name="past" TextColor="Blue" FontSize="20"></Span>
                                 <Span x:Name="current" TextColor="Lime" FontSize="20"></Span>
-                                <Span x:Name="future" TextColor="Cyan" FontSize="20"></Span>
+                                <Span x:Name="future" TextColor="DodgerBlue" FontSize="20"></Span>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Editor x:Name="messagetxt" VerticalOptions="FillAndExpand" Keyboard="Plain" Style="{StaticResource unstable_editor}"></Editor>
+                    <Editor x:Name="messagetxt" VerticalOptions="FillAndExpand" Keyboard="Text" Style="{StaticResource unstable_editor}" 
+                            BackgroundColor="{AppThemeBinding Dark=#323232, Default=White,Light=White}"></Editor>
                 </StackLayout>
 
             </Frame>
@@ -69,21 +71,31 @@
    
         <StackLayout x:Name="ui_stuff" Grid.Row="1" Orientation="Vertical">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label x:Name="tellVel">скорость: 100%</Label>
-                    <CheckBox Style="{StaticResource beeper_checkbox}" x:Name="beeper" CheckedChanged="beeper_CheckedChanged"></CheckBox>
-                    <Label Style="{StaticResource beeper_text}">Также орать</Label>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="-5">
+                    <Label VerticalTextAlignment="Center" x:Name="tellVel" TextColor="Black">скорость:</Label>
+
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Spacing="-5" Orientation="Horizontal">
+                            <CheckBox Style="{StaticResource beeper_checkbox}" x:Name="beeper" CheckedChanged="beeper_CheckedChanged"></CheckBox>
+                            <Label Style="{StaticResource beeper_text}" Text="{x:Static resources:AppResources.sound}"></Label>
+                        </StackLayout>
+                        <StackLayout Spacing="-5" Orientation="Horizontal">
+                            <CheckBox Color="{AppThemeBinding Dark=DarkSlateGray, Default=DodgerBlue,Light=DodgerBlue}" x:Name="loop"></CheckBox>
+                            <Label Text="{x:Static resources:AppResources.loop}"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    
                 </StackLayout>
                 <Slider x:Name="chooseVel" ValueChanged="chooseVel_ValueChanged" MinimumTrackColor="Blue" ThumbColor="DarkBlue" MaximumTrackColor="LightSteelBlue" Maximum="230" Minimum="60" Value="100"></Slider>
             </StackLayout>
             
 
             <Grid x:Name="lil_buttons" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions> 
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-                <ImageButton x:Name="play"  Source="pics/play_btn.png"  Style="{StaticResource Key=playback_button}" Grid.ColumnSpan="2"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton x:Name="play" Source="pics/play_btn.png"  Style="{StaticResource Key=playback_button}" Grid.ColumnSpan="2"/>
                 <ImageButton x:Name="pause" Clicked="pause_Clicked" Source="pics/pause_btn.png" Style="{StaticResource Key=playback_button}"></ImageButton>
                 <ImageButton x:Name="stop"  Clicked="pause_Clicked" Source="pics/stop_btn.png"  Style="{StaticResource Key=playback_button}" Grid.Column="1"/>
             </Grid>

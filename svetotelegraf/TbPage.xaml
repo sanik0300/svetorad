@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:local="clr-namespace:svetotelegraf;assembly=svetotelegraf"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
              x:Class="svetotelegraf.TbPage">
     
     <!--Pages can be added as references or inline-->
-    <local:MainPage Title="🔦 Ввод/вывод 📢"></local:MainPage>
-    <local:SettingsPage Title="Настройки 📻"></local:SettingsPage>
+    <local:MainPage x:Name="main_page"></local:MainPage>
+    <local:SettingsPage x:Name="settings_page"></local:SettingsPage>
 </TabbedPage>

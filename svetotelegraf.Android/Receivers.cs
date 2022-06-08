@@ -1,13 +1,6 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
+﻿using Android.Content;
 using Android.Runtime;
 using Android.Telephony;
-using Android.Views;
-using Android.Widget;
-using System;
-using System.Collections.Generic;
-using svetotelegraf;
 using Xamarin.Forms;
 
 namespace svetotelegraf.Droid
@@ -15,7 +8,7 @@ namespace svetotelegraf.Droid
     [BroadcastReceiver(Enabled = true)]
     class AtsralReceiver : BroadcastReceiver, IСanCarryMessages
     {
-        public const string Filter = "pause_this_shit_pls";
+        public const string Filter = "pause_this_pls";
         public string CurrentMessage { get; private set; }
 
         public override void OnReceive(Context context, Intent intent)

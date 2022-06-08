@@ -39,11 +39,12 @@ namespace svetotelegraf.Droid
             if (headline != string.Empty)
                 builder = builder.SetContentTitle(headline);
 
-            builder.SetContentText(play ? "(на паузе)" : string.Empty);
+            builder.SetContentText(play ? AppResources.on_pause : string.Empty);
 
-            NotificationCompat.Action aaaa1 = new NotificationCompat.Action(Resource.Drawable.abc_cab_background_top_material, play ? "продолжить" : "пауза", pi);
+            NotificationCompat.Action aaaa1 = new NotificationCompat.Action(
+                    Resource.Drawable.abc_cab_background_top_material, play ? AppResources.play_keyword : AppResources.pause_keyword, pi);
             if (builder.MActions.Count == 0)
-                builder = builder.AddAction(aaaa1).AddAction(Resource.Drawable.abc_cab_background_top_material, "стоп", pi2);
+                builder = builder.AddAction(aaaa1).AddAction(Resource.Drawable.abc_cab_background_top_material, AppResources.stop_keyword, pi2);
             else
                 builder.MActions[0] = aaaa1;
 
