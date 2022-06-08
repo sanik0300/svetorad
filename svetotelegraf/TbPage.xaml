@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:local="clr-namespace:svetotelegraf;assembly=svetotelegraf"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:resources="clr-namespace:svetotelegraf"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
              x:Class="svetotelegraf.TbPage">
     
     <!--Pages can be added as references or inline-->
-    <local:MainPage Title="{x:Static resources:AppResources.main_tab}"></local:MainPage>
-    <local:SettingsPage Title="{x:Static resources:AppResources.settings_tab}"></local:SettingsPage>
+    <local:MainPage x:Name="main_page"></local:MainPage>
+    <local:SettingsPage x:Name="settings_page"></local:SettingsPage>
 </TabbedPage>

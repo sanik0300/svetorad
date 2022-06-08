@@ -15,6 +15,10 @@ namespace svetotelegraf
         public TbPage()
         {
             InitializeComponent();
+            main_page.Title = new StringBuilder(AppResources.main_tab, AppResources.main_tab.Length + 4)
+                                .Insert(0, "📢 ").Append(" 🔦").ToString();
+            settings_page.Title = new StringBuilder(AppResources.settings_tab, AppResources.settings_tab.Length + 2)
+                                .Append(" 📻").ToString();
         }
     }
 }
